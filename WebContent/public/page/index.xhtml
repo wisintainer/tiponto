@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<p:messages id="msg" />
+	<h:form>
+		<p:panel style="width: 25%;" header="Horários">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Entrada" />
+				<p:inputMask mask="99:99" value="#{pontoMB.horario.entrada}" />
+
+				<p:outputLabel value="Saída Intervalo" />
+				<p:inputMask mask="99:99" value="#{pontoMB.horario.saida_intervalo}" />
+
+				<p:outputLabel value="Volta Intervalo" />
+				<p:inputMask mask="99:99" value="#{pontoMB.horario.volta_intervalo}" />
+
+			</p:panelGrid>
+			<p:commandButton process="@form" update="painel_calculado, msg"
+				value="Calcular" actionListener="#{pontoMB.calcular()}" />
+		</p:panel>
+	</h:form>
+	<p:panel id="painel_calculado" style="width: 25%;" header="Horário de Saída">
+		<p:outputLabel value="#{pontoMB.horario_de_saida}" />
+	</p:panel>
+
+</h:body>
+</html>
